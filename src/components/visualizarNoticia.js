@@ -49,7 +49,7 @@ const Noticia = styled.div`
         display: none;
     }
 
-    @media screen and (min-width: 820px) {
+    @media screen and (min-width: 750px) {
         font-size: 15px;
 
         & i {
@@ -65,7 +65,7 @@ const Img = styled.div`
     background-repeat: repeat;
     background-size: contain;
 
-    @media screen and (min-width: 820px) {
+    @media screen and (min-width: 750px) {
         width: 60%;
         height: 60%;
         margin-bottom: 15px;
@@ -79,7 +79,7 @@ const BtnDevolver = styled.img`
     height: 10vw;
     cursor: pointer;
 
-    @media screen and (min-width: 820px) {
+    @media screen and (min-width: 750px) {
         width: 4vw;
         height: 4vw;
         margin: 0;
