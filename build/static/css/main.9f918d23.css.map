@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.9f918d23.css","mappings":"AAAA,EAGI,qBAAsB,CACtB,4BAAgC,CAHhC,QAAS,CACT,SAIJ","sources":["styles/styles.css"],"sourcesContent":["*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n    font-family: 'Rubik', sans-serif;\r\n\r\n}"],"names":[],"sourceRoot":""}
