@@ -214,7 +214,7 @@ export default function NoticiasComponent(){
     return (
         <ListaContenedor>
             <h2>Noticias sobre Desarrollo Web y Software</h2>
-            <Noticias style={{display:verNoticia[0] ? "none" : "grid"}}>
+            <Noticias style={{overflowY:verNoticia[0] ? "hidden" : "scroll"}}>
                 { noticias !== undefined &&
                     noticias.map((noticia, index)=>(
                         <Noticia onClick={()=>setVerNoticia([noticia, index])} key={index}>
