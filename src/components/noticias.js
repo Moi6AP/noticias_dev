@@ -212,7 +212,7 @@ export default function NoticiasComponent(){
     })
 
     return (
-        <ListaContenedor style={{overflowY:verNoticia[0] ? "hidden" : "scroll"}}>
+        <ListaContenedor>
             <h2>Noticias sobre Desarrollo Web y Software</h2>
             <Noticias>
                 { noticias !== undefined &&
