@@ -30,7 +30,7 @@ const CargandoContenedor = styled.div`
         height: 100%;
     }
 
-    @media screen and (min-width: 820px) {
+    @media screen and (min-width: 750px) {
         width: 3vw;
     }
 `;
@@ -40,7 +40,7 @@ const Noticias = styled.div`
     justify-items: center;
     grid-template-columns: auto;
 
-    @media screen and (min-width:820px) {
+    @media screen and (min-width:750px) {
         grid-template-columns: auto auto;
     }
     
@@ -89,7 +89,7 @@ const Noticia = styled.div`
         text-decoration: underline;
     }
 
-    @media screen and (min-width:820px){
+    @media screen and (min-width:750px){
         border-radius: 0.5vw;
         margin-bottom: 2vw;
         font-size: 15px;
