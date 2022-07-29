@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import "../styles/styles.css";
+import VisualizarNoticia from "./visualizarNoticia";
 
 //Imagenes
 import cargandoImg from "../images/cargando.gif";
@@ -16,7 +17,7 @@ const ListaContenedor = styled.div`
 
     & h2 {
         font-weight: 600;
-        margin: 3vw 0;
+        margin: 4vw 0;
         text-align: center;
     }
 `;
@@ -49,6 +50,7 @@ const Noticias = styled.div`
 `;
 
 const Noticia = styled.div`
+    cursor: pointer;
     width: 95%;
     display: flex;
     background-color: #F0F0F0;
@@ -84,7 +86,6 @@ const Noticia = styled.div`
         width: 100%;
     }
     & i {
-        cursor: pointer;
         text-decoration: underline;
     }
 
@@ -107,6 +108,11 @@ const Noticia = styled.div`
     }
 `;
 
+export function convertirAfecha (txt){
+    const fecha = new Date(txt);
+    
+    return fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear();
+}
 
 
 export default function NoticiasComponent(){
@@ -115,7 +121,7 @@ export default function NoticiasComponent(){
     let [cargandoNoticias, setCargandoNoticias] = useState(false);
     let [pagina, setPagina ] = useState(1);
     let [listaVacia, setListaVacia] = useState(false);
-    let [verNoticia, setVerNoticia] = useState(false);
+    let [verNoticia, setVerNoticia] = useState([false, false]);
 
     async function getNoticiasDesarrolloWeb(){
         if (!cargandoNoticias && !listaVacia) {
@@ -155,7 +161,6 @@ export default function NoticiasComponent(){
                                     }
                                 }
                             })
-                            noticia.img = "https://random.imagecdn.app/500/500";
                             if (noticia.story_title !== null || noticia.title !== null) {
                                 if (diferente) {
                                     newNoticias.push(noticia);
@@ -175,12 +180,6 @@ export default function NoticiasComponent(){
             })
             setCargandoNoticias(false);
         }
-    }
-
-    function convertirAfecha (txt){
-        const fecha = new Date(txt);
-        
-        return fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getFullYear();
     }
 
     function recortarTexto (texto){
@@ -215,11 +214,11 @@ export default function NoticiasComponent(){
     return (
         <ListaContenedor>
             <h2>Noticias sobre Desarrollo Web y Software</h2>
-            <Noticias>
+            <Noticias style={{display:verNoticia[0] ? "none" : "grid"}}>
                 { noticias !== undefined &&
                     noticias.map((noticia, index)=>(
-                        <Noticia key={index}>
-                            <img src={noticia.img} />
+                        <Noticia onClick={()=>setVerNoticia([noticia, index])} key={index}>
+                            <img src={`https://picsum.photos/id/${index}/500/500`} />
                             <div>
                                 <h3>{noticia.title || noticia.story_title}</h3>
                                 <p style={{marginBottom:"3px"}}>Por <b>{noticia.author}</b></p>
@@ -234,6 +233,9 @@ export default function NoticiasComponent(){
             </Noticias>
             { cargandoNoticias === true &&
                 <CargandoContenedor><img src={cargandoImg} /></CargandoContenedor>
+            }
+            { verNoticia[0] &&
+                <VisualizarNoticia datos={verNoticia} close={()=>setVerNoticia(false)} />
             }
         </ListaContenedor>
     );
