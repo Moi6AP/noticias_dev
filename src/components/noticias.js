@@ -30,7 +30,7 @@ const CargandoContenedor = styled.div`
         height: 100%;
     }
 
-    @media screen and (min-width: 750px) {
+    @media screen and (min-width: 820px) {
         width: 3vw;
     }
 `;
@@ -40,7 +40,7 @@ const Noticias = styled.div`
     justify-items: center;
     grid-template-columns: auto;
 
-    @media screen and (min-width:750px) {
+    @media screen and (min-width:820px) {
         grid-template-columns: auto auto;
     }
     
@@ -89,7 +89,7 @@ const Noticia = styled.div`
         text-decoration: underline;
     }
 
-    @media screen and (min-width:750px){
+    @media screen and (min-width:820px){
         border-radius: 0.5vw;
         margin-bottom: 2vw;
         font-size: 15px;
@@ -187,7 +187,7 @@ export default function NoticiasComponent(){
 
         const arrayText = texto.split("");
         arrayText.map((letra)=>{
-            if (result.length < 91) {
+            if (result.length < 51) {
                 result = result+letra;
             }
         });
@@ -212,7 +212,7 @@ export default function NoticiasComponent(){
     })
 
     return (
-        <ListaContenedor>
+        <ListaContenedor style={{overflowY:verNoticia[0] ? "hidden" : "scroll"}}>
             <h2>Noticias sobre Desarrollo Web y Software</h2>
             <Noticias>
                 { noticias !== undefined &&
